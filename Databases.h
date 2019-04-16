@@ -17,9 +17,22 @@ struct CSG{
 	char grade[2]; //grade the student received
 };
 
+struct SNAP{
+	int SID;
+	char name[15];
+	char address[20];
+	int pNumber;
+};
+
 struct Prerequisite{
-	char couse[5];
+	char course[5];
 	char prerequ[5];
+};
+
+struct Cour_Day_Hour{
+	char course[5];
+	char day[2];
+	char time[4];
 };
 
 struct Course_Room{

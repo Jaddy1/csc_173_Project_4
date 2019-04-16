@@ -6,8 +6,9 @@
 
 struct Database{
 	struct LinkedList *list;
-	int relations
+	int relations;
 };
+
 struct CSG{
 	int ID;
 	char Name[30];
@@ -17,25 +18,25 @@ struct CSG{
 };
 //typedef TUPLELIST Course-Prerequisite[1009];
 
-void delete(char * course, char * ID, char s, TUPLELIST t);
-bool lookup(TUPLE a, TUPLELIST t);
-void insert(TUPLE a, TUPLELIST t);
+void delete(char c, TUPLELIST t);
+bool lookup(char c, TUPLELIST t);
+void insert(char c, TUPLELIST t);
 
 int main(void){
 //	TUPLE randomStudents = ;
 }
 
 
-bool lookup(TUPLE a, TUPLELIST t){
+bool lookup(char c, TUPLELIST t){
 
 	return false;
 }
 
-void delete(TUPLE a, TUPLELIST t){
+void delete(char c, TUPLELIST t){
 
 
 }
 
-void insert(TUPLE a, TUPLELIST t){
+void insert(char c, TUPLELIST t){
 
 }
