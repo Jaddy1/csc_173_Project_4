@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct TUPLE TUPLELIST;
-struct TUPLE{
-	int ID;
-	char Name[30];
-	char Address[50];
-	char Phone[10];
-	TUPLELIST next;
-};
+//typedef struct TUPLE TUPLELIST;
+//struct TUPLE{
+//	int ID;
+//	char Name[30];
+//	char Address[50];
+//	char Phone[10];
+//	TUPLELIST next;
+//};
 
 struct CSG{
 	char course[5]; //course name
@@ -17,22 +17,22 @@ struct CSG{
 	char grade[2]; //grade the student received
 };
 
-struct SNAP{
+struct SNAP{ //student name address phone
 	int SID;
 	char name[15];
-	char address[20];
-	int pNumber;
+	char address[20]; //address of the student
+	int pNumber;	//phone number
 };
 
-struct Prerequisite{
+struct Prerequisite{//course and its prerequisite
 	char course[5];
-	char prerequ[5];
+	char prereq[5]; //prerequisite of the course
 };
 
 struct Cour_Day_Hour{
 	char course[5];
-	char day[2];
-	char time[4];
+	char day[2];	//day of the week
+	char time[4];	//time of the class
 };
 
 struct Course_Room{
