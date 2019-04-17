@@ -20,8 +20,6 @@ int main(void){
     insert_CSG(db, csg3);
     insert_CSG(db, csg4);
     insert_CSG(db, csg5);
-    insert_CSG(db, csg6);
-
-    printDatabase(db); 
+    insert_CSG(db, csg6); 
 
 }

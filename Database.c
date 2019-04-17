@@ -25,9 +25,3 @@ DB* newDatabase() {
 
 	return db;
 }
-
-void printDatabase(DB *db) {
-	printf("\nDATABASE\n");
-	printf("CSG\n");
-	LinkedList_print_string_list(db->csg);
-}
