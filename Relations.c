@@ -59,6 +59,12 @@ void insert_CR(DB *db, CR_Relation *cr) {
 }
 
 void delete_CSG(DB *db, char *C, char *S, char *G) {
+    LinkedList csg = db->csg;
+
+    while(LinkedListIterator_hasNext(csg)) {
+        if()
+    }
+
 
 }
 
