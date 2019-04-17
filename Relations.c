@@ -62,6 +62,7 @@ void insert_CR(DB *db, CR_Relation *cr) {
 void delete_CSG(DB *db, char *C, char *S, char *G) {
     LinkedList csg = db->csg;
     LinkedListIterator it = LinkedList_iterator(csg);
+    char *ASTERISK = "*";
 
     printf("Delete Specification: ('%s', '%s', '%s') \n", C, S, G);
 
@@ -70,17 +71,17 @@ void delete_CSG(DB *db, char *C, char *S, char *G) {
 		CSG_Relation *rel = data;
         printf("Current tuple (%s, %s, %s) \n", rel->course, rel->SID, rel->grade);
 
-        if((rel->course == C || rel->course == "*")
-            && (rel->SID == S || rel->SID == "*") 
-            && (rel->grade == G || rel->grade== "*")) 
+        if(rel->course == C || rel->course == ASTERISK)
+           // && (rel->SID == S || rel->SID == "*") 
+           // && (rel->grade == G || rel->grade== "*")) 
         {
             LinkedList_remove(csg, rel);
             printf("Deleted tuple: Course = %s, StudentID = %s, Grade = %s \n", rel->course, rel->SID, rel->grade);
         }
     }
 
-    printf("New Relation: \n");
-    LinkedList_print_string_list(csg);
+    printf("\nNew Relation: \n");
+    LinkedList_print_string_list(csg); //Doesn't print info in tuples but can be used to see how many tuples are present
 
     free(it);
 }
