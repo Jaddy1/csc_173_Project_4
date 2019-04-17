@@ -2,6 +2,10 @@
     "files.associations": {
         "databases.h": "c",
         "linkedlist.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "relations.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "database.h": "c"
     }
 }
