@@ -37,9 +37,16 @@ int main(void){
 }
 
 
-bool lookup(char *c, DB *dataBase){
+DB lookup(char *c, DB *dataBase){
+	char delimiter = ",";
+	char *token;
+	int contains = 1;
+	DB *tempDB = (DB*)malloc(sizeof(DB));
+	tempDB->list = new_LinkedList();
 
-	return false;
+	LinkedListIterator
+
+	return dataBase;
 }
 
 void delete(char *c, DB *dataBase){
