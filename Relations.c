@@ -248,8 +248,31 @@ void delete_CR(DB *db, char *C, char *R) {
 
 }
 
-void lookup_CSG(DB *db, char *C, char *S, char *G) {
+DB *lookup_CSG(DB *db, char *C, char *S, char G){
+	DB *newDB = (DB)malloc(sizeof(DB));
+	LinkedList csg = db->csg;
+	LinkedListIterator *it = LinkedList_iterator(db->csg);
+	char *ASTERISK = "A";
 
+	while(LinkedListIterator_hasNext(it)){
+		void *data = LinkedListIterator_next(it);
+		CSG_Relation *rel = data;
+		printf("Current tuple (%s, %s, %s)\n", rel->course, rel->SID, rel->grade);
+
+		bool Cmatches = (rel->course == C || ASTERISK);
+		bool Smatches = (rel ->SID == ASTERISK || S == ASTERISK);
+		bool Gmatches = (rel->grade == ASTERISK || G == ASTERISK);
+
+		printf("%d %d %d \n", Cmatches, Smatches, Gmatches);
+
+		if(Cmatches && Smatches && Gmatches){
+			LinkedList_add_at_end(csg, rel);
+			printf("Added tuple: Course = %s, StudentID = %s, Grade = %s \n", rel->course, rel->SID, rel->grade);
+		}
+	}
+
+	free(it);
+	return newDB;
 }
 
 void lookup_SNAP(DB *db, char *S, char *N, char *A, char *P) {
@@ -300,7 +323,7 @@ void print_SNAP(DB *db) {
         printf("Tuple %d: (%s, %s, %s, %s) \n", tupleCount, rel->SID, rel->name, rel->address, rel->pNumber);
 
     }
-    
+
 }
 void print_CDH(DB *db) {
     LinkedList cdhTuples = db->cdh;
@@ -317,7 +340,7 @@ void print_CDH(DB *db) {
         printf("Tuple %d: (%s, %s, %s) \n", tupleCount, rel->course, rel->day, rel->hour);
 
     }
-    
+
 }
 void print_CP(DB *db) {
     LinkedList cpTuples = db->cp;
@@ -334,7 +357,7 @@ void print_CP(DB *db) {
         printf("Tuple %d: (%s, %s) \n", tupleCount, rel->course, rel->prereq);
 
     }
-    
+
 }
 void print_CR(DB *db) {
     LinkedList crTuples = db->cr;
@@ -351,5 +374,5 @@ void print_CR(DB *db) {
         printf("Tuple %d: (%s, %s) \n", tupleCount, rel->course, rel->room);
 
     }
-    
+
 }
