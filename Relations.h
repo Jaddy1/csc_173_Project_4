@@ -25,7 +25,7 @@ typedef struct CP{//course and its prerequisite
 typedef struct CDH{
 	char *course;
 	char *day;	//day of the week
-	char *time;	//time of the class
+	char *hour;	//time of the class
 }CDH_Relation;
 
 typedef struct CR{
@@ -35,6 +35,10 @@ typedef struct CR{
 
 
 CSG_Relation* new_CSG(char *C, char *S, char *G);
+SNAP_Relation* new_SNAP(char *S, char *N, char *A, char *P);
+CP_Relation* new_CP(char *C, char *P);
+CDH_Relation* new_CDH(char *C, char *D, char *H);
+CR_Relation* new_CR(char *C, char *R);
 void insert_CSG(DB *db, CSG_Relation *csg);
 void insert_SNAP(DB *db, SNAP_Relation *snap);
 void insert_CP(DB *db, CP_Relation *cp);
@@ -51,5 +55,8 @@ void lookup_CP(DB *db, char *C, char *P);
 void lookup_CDH(DB *db, char *C, char *D, char *H);
 void lookup_CR(DB *db, char *C, char *P);
 void print_CSG(DB *db);
-
+void print_SNAP(DB *db);
+void print_CP(DB *db);
+void print_CDH(DB *db);
+void print_CR(DB *db);
 #endif
