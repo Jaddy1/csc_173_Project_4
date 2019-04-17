@@ -50,6 +50,6 @@ void lookup_SNAP(DB *db, char *S, char *N, char *A, char *P);
 void lookup_CP(DB *db, char *C, char *P);
 void lookup_CDH(DB *db, char *C, char *D, char *H);
 void lookup_CR(DB *db, char *C, char *P);
-
+void print_CSG(DB *db);
 
 #endif

@@ -62,7 +62,7 @@ void insert_CR(DB *db, CR_Relation *cr) {
 void delete_CSG(DB *db, char *C, char *S, char *G) {
     LinkedList csg = db->csg;
     LinkedListIterator it = LinkedList_iterator(csg);
-    char *ASTERISK = "*";
+    char *ASTERISK = "A";
 
     printf("Delete Specification: ('%s', '%s', '%s') \n", C, S, G);
 
@@ -71,17 +71,21 @@ void delete_CSG(DB *db, char *C, char *S, char *G) {
 		CSG_Relation *rel = data;
         printf("Current tuple (%s, %s, %s) \n", rel->course, rel->SID, rel->grade);
 
-        if(rel->course == C || rel->course == ASTERISK)
-           // && (rel->SID == S || rel->SID == "*") 
-           // && (rel->grade == G || rel->grade== "*")) 
-        {
+        bool Cmatches = (rel->course == C || C == ASTERISK);
+        bool Smatches = (rel->SID == ASTERISK || S == ASTERISK);
+        bool Gmatches = (rel->grade == ASTERISK || G == ASTERISK);
+
+        printf("%d %d %d \n", Cmatches, Smatches, Gmatches);
+
+        if(Cmatches && Smatches && Gmatches) {
             LinkedList_remove(csg, rel);
             printf("Deleted tuple: Course = %s, StudentID = %s, Grade = %s \n", rel->course, rel->SID, rel->grade);
         }
     }
 
     printf("\nNew Relation: \n");
-    LinkedList_print_string_list(csg); //Doesn't print info in tuples but can be used to see how many tuples are present
+    //LinkedList_print_string_list(csg); //Doesn't print info in tuples but can be used to see how many tuples are present
+    print_CSG(db);
 
     free(it);
 }
@@ -120,4 +124,34 @@ void lookup_CDH(DB *db, char *C, char *D, char *H) {
 
 void lookup_CR(DB *db, char *C, char *P) {
 
+}
+
+void print_CSG(DB *db) {
+    LinkedList csgTuples = db->csg;
+    LinkedListIterator it = LinkedList_iterator(csgTuples);
+    int tupleCount = 0;
+
+    printf("\nCSG RELATION\n");
+
+    while(LinkedListIterator_hasNext(it)) {
+        void *data = LinkedListIterator_next(it);
+		CSG_Relation *rel = data;
+        tupleCount++;
+
+        printf("Tuple %d: (%s, %s, %s) \n", tupleCount, rel->course, rel->SID, rel->grade);
+
+    }
+}
+
+void print_SNAP(DB db) {
+    
+}
+void print_CDH(DB db) {
+    
+}
+void print_CP(DB db) {
+    
+}
+void print_CR(DB db) {
+    
 }

@@ -13,8 +13,10 @@ struct Database{
 	struct LinkedList *cr;
 };
 
+
 typedef struct Database DB;
 
 DB* newDatabase();
+void printDatabase(DB db);
 
 #endif
