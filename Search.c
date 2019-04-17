@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<stdbool.h>
 #include"LinkedList.h"
-#include"Databases.h"
+#include"Database.h"
 
 Database* Db_Lookup(Database *LB, char *c){
 	char delim[] = ",";

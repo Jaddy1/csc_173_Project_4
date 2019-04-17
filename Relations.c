@@ -6,11 +6,11 @@
 #include "Database.h"
 
 CSG_Relation* new_CSG(char *C, char *S, char *G) {
-	CSG_Relation *csg = malloc(sizeof(struct CSG));
+	CSG_Relation *csg = (CSG_Relation *)malloc(sizeof(struct CSG));
 
-	strcpy(csg->course, C);
-	strcpy(csg->SID, S);
-	strcpy(csg->grade, G);
+	csg->course = C;
+	csg->SID = S;
+	csg->grade = G;
 
 	return csg;
 }
@@ -25,7 +25,7 @@ void insert_CSG(DB *db, CSG_Relation *csg) {
 
 void insert_SNAP(DB *db, SNAP_Relation *snap) {
 	if (LinkedList_contains(db->snap, snap)) {
-		printf("ERROR: Duplicate tuple");
+		printf("ERROR: Duplicate tuple \n");
 	}else{
 		LinkedList_add_at_end(db->snap, snap);
         printf("Inserted SNAP in the database\n");
@@ -34,28 +34,28 @@ void insert_SNAP(DB *db, SNAP_Relation *snap) {
 
 void insert_CP(DB *db, CP_Relation *cp) {
 	if (LinkedList_contains(db->cp, cp)) {
-		printf("ERROR: Duplicate tuple");
+		printf("ERROR: Duplicate tuple \n");
 	} else {
 		LinkedList_add_at_end(db->cp, cp);
-        printf("Inserted CP into the database");
+        printf("Inserted CP into the database \n");
 	}
 }
 
 void insert_CDH(DB *db, CDH_Relation *cdh) {
 	if (LinkedList_contains(db->cp, cdh)) {
-		printf("ERROR: Duplicate tuple");
+		printf("ERROR: Duplicate tuple \n");
 	} else {
 		LinkedList_add_at_end(db->cdh, cdh);
-        printf("Inserted CDH into the database");
+        printf("Inserted CDH into the database \n");
 	}
 }
 
 void insert_CR(DB *db, CR_Relation *cr) {
 	if (LinkedList_contains(db->cr, cr)) {
-		printf("ERROR: Duplicate tuple");
+		printf("ERROR: Duplicate tuple \n");
 	} else {
 		LinkedList_add_at_end(db->cr, cr);
-        printf("Inserted CR into the database");
+        printf("Inserted CR into the database \n");
 	}
 }
 
@@ -63,14 +63,26 @@ void delete_CSG(DB *db, char *C, char *S, char *G) {
     LinkedList csg = db->csg;
     LinkedListIterator it = LinkedList_iterator(csg);
 
+    printf("Delete Specification: ('%s', '%s', '%s') \n", C, S, G);
+
     while(LinkedListIterator_hasNext(it)) {
         void *data = LinkedListIterator_next(it);
 		CSG_Relation *rel = data;
+        printf("Current tuple (%s, %s, %s) \n", rel->course, rel->SID, rel->grade);
 
-        if(strcmp(rel->course, C) == 0 || strcmp(rel->course, "*") {
-            if(strcmp(rel))
+        if((rel->course == C || rel->course == "*")
+            && (rel->SID == S || rel->SID == "*") 
+            && (rel->grade == G || rel->grade== "*")) 
+        {
+            LinkedList_remove(csg, rel);
+            printf("Deleted tuple: Course = %s, StudentID = %s, Grade = %s \n", rel->course, rel->SID, rel->grade);
         }
     }
+
+    printf("New Relation: \n");
+    LinkedList_print_string_list(csg);
+
+    free(it);
 }
 
 void delete_SNAP(DB *db, char *S, char *N, char *A, char *P) {

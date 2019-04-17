@@ -5,32 +5,32 @@
 #include "LinkedList.h"
 
 typedef struct CSG{
-	char course[5]; //course name
-	int SID; //student ID
-	char grade[2]; //grade the student received
+	char *course; //course name
+	char *SID; //student ID
+	char *grade; //grade the student received
 }CSG_Relation;
 
 typedef struct SNAP{ //student name address phone
-	int studentID;
-	char name[15];
-	char address[20]; //address of the student
-	int pNumber;	//phone number
+	char *SID;
+	char *name;
+	char *address; //address of the student
+	char *pNumber;	//phone number
 }SNAP_Relation;
 
 typedef struct CP{//course and its prerequisite
-	char course[5];
-	char prereq[5]; //prerequisite of the course
+	char *course;
+	char *prereq; //prerequisite of the course
 }CP_Relation;
 
 typedef struct CDH{
-	char course[5];
-	char day[2];	//day of the week
-	char time[4];	//time of the class
+	char *course;
+	char *day;	//day of the week
+	char *time;	//time of the class
 }CDH_Relation;
 
 typedef struct CR{
-	char course[5];
-	char room[15];
+	char *course;
+	char *room;
 }CR_Relation;
 
 

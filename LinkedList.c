@@ -222,6 +222,17 @@ void* LinkedListIterator_next(LinkedListIterator this) {
 		return data;
 	}
 }
+void LinkedList_print_string_list(LinkedList this) {
+	printf("[");
+	for (Node node=this->first; node != NULL; node=node->next) {
+		printf("%s", (char*)(node->data));
+		if (node->next != NULL) {
+			printf(" ");
+		}
+	}
+	printf("]\n");
+}
+
 
 #ifdef MAIN
 
