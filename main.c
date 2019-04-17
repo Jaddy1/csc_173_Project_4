@@ -22,5 +22,6 @@ int main(void){
     insert_CSG(db, csg5);
     insert_CSG(db, csg6);
 
+    printDatabase(db); 
 
 }

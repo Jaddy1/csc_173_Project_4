@@ -21,7 +21,7 @@ void insert_CSG(DB *db, CSG_Relation *csg) {
 	LinkedList_add_at_end(db->csg, csg);
 }
 
-void insert_SNAP(DB *db, SNAP_Relation snap) {
+void insert_SNAP(DB *db, SNAP_Relation *snap) {
 	if(LinkedList_contains(db->snap, snap)){
 		printf("ERROR: Duplicate tuple");
 	}else{
@@ -30,15 +30,15 @@ void insert_SNAP(DB *db, SNAP_Relation snap) {
 	}
 }
 
-void insert_CP(DB *db, CP_Relation cp) {
+void insert_CP(DB *db, CP_Relation *cp) {
 
 }
 
-void insert_CDH(DB *db, CDH_Relation cdh) {
+void insert_CDH(DB *db, CDH_Relation *cdh) {
 
 }
 
-void insert_CR(DB *db, CR_Relation cr) {
+void insert_CR(DB *db, CR_Relation *cr) {
 
 }
 
@@ -50,34 +50,34 @@ void delete_SNAP(DB *db, char *S, char *N, char *A, char *P) {
 
 }
 
-void delete_CP(DB db, char *C, char *P) {
+void delete_CP(DB *db, char *C, char *P) {
 
 }
 
-void delete_CDH(DB db, char *C, char *D, char *H) {
+void delete_CDH(DB *db, char *C, char *D, char *H) {
 
 }
 
-void delete_CR(DB db, char *C, char *R) {
+void delete_CR(DB *db, char *C, char *R) {
 
 }
 
-void lookup_CSG(DB db, char *C, char *S, char *G) {
+void lookup_CSG(DB *db, char *C, char *S, char *G) {
 
 }
 
-void lookup_SNAP(DB db, char *S, char *N, char *A, char *P) {
+void lookup_SNAP(DB *db, char *S, char *N, char *A, char *P) {
 
 }
 
-void lookup_CP(DB db, char *C, char *P) {
+void lookup_CP(DB *db, char *C, char *P) {
 
 }
 
-void lookup_CDH(DB db, char *C, char *D, char *H) {
+void lookup_CDH(DB *db, char *C, char *D, char *H) {
 
 }
 
-void lookup_CR(DB db, char *C, char *P) {
+void lookup_CR(DB *db, char *C, char *P) {
 
 }

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "LinkedList.h"
 #include "Relations.h"
 #include "Database.h"
 #include "LinkedList.h"
@@ -25,4 +24,10 @@ DB* newDatabase() {
 	db->cr = cr;
 
 	return db;
+}
+
+void printDatabase(DB *db) {
+	printf("\nDATABASE\n");
+	printf("CSG\n");
+	LinkedList_print_string_list(db->csg);
 }
