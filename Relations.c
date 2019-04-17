@@ -59,7 +59,8 @@ void insert_CSG(DB *db, CSG_Relation *csg) {
 		printf("ERROR: Duplicate tuple\n");
 	}
 	LinkedList_add_at_end(db->csg, csg);
-    printf("Inserted CSG in the database\n");
+    printf("\nInserted CSG in the database\n");
+    print_CSG(db);
 }
 
 void insert_SNAP(DB *db, SNAP_Relation *snap) {
@@ -67,7 +68,8 @@ void insert_SNAP(DB *db, SNAP_Relation *snap) {
 		printf("ERROR: Duplicate tuple \n");
 	}else{
 		LinkedList_add_at_end(db->snap, snap);
-        printf("Inserted SNAP in the database\n");
+        printf("\nInserted SNAP in the database\n");
+        print_SNAP(db);
 	}
 }
 
@@ -76,7 +78,8 @@ void insert_CP(DB *db, CP_Relation *cp) {
 		printf("ERROR: Duplicate tuple \n");
 	} else {
 		LinkedList_add_at_end(db->cp, cp);
-        printf("Inserted CP into the database \n");
+        printf("\nInserted CP into the database \n");
+        print_CP(db);
 	}
 }
 
@@ -85,7 +88,8 @@ void insert_CDH(DB *db, CDH_Relation *cdh) {
 		printf("ERROR: Duplicate tuple \n");
 	} else {
 		LinkedList_add_at_end(db->cdh, cdh);
-        printf("Inserted CDH into the database \n");
+        printf("\nInserted CDH into the database \n");
+        print_CDH(db);
 	}
 }
 
@@ -94,7 +98,8 @@ void insert_CR(DB *db, CR_Relation *cr) {
 		printf("ERROR: Duplicate tuple \n");
 	} else {
 		LinkedList_add_at_end(db->cr, cr);
-        printf("Inserted CR into the database \n");
+        printf("\nInserted CR into the database \n");
+        print_CR(db);
 	}
 }
 
@@ -103,7 +108,7 @@ void delete_CSG(DB *db, char *C, char *S, char *G) {
     LinkedListIterator it = LinkedList_iterator(csg);
     char *ASTERISK = "*";
 
-    printf("Delete Specification: ('%s', '%s', '%s') \n", C, S, G);
+    printf("\n Delete Specification: ('%s', '%s', '%s') \n", C, S, G);
 
     while(LinkedListIterator_hasNext(it)) {
         void *data = LinkedListIterator_next(it);
@@ -122,7 +127,7 @@ void delete_CSG(DB *db, char *C, char *S, char *G) {
         }
     }
 
-    printf("\nNew Relation: \n");
+    printf("\nUpdated CSG Relation: \n");
     print_CSG(db);
 
     free(it);
@@ -133,7 +138,7 @@ void delete_SNAP(DB *db, char *S, char *N, char *A, char *P) {
     LinkedListIterator it = LinkedList_iterator(snap);
     char *ASTERISK = "*";
 
-    printf("Delete Specification: ('%s', '%s', '%s', '%s') \n", S, N, A, P);
+    printf("\n Delete Specification: ('%s', '%s', '%s', '%s') \n", S, N, A, P);
 
     while(LinkedListIterator_hasNext(it)) {
         void *data = LinkedListIterator_next(it);
@@ -151,7 +156,7 @@ void delete_SNAP(DB *db, char *S, char *N, char *A, char *P) {
         }
     }
 
-    printf("\nNew Relation: \n");
+    printf("\nUpdated SNAP Relation: \n");
     print_SNAP(db);
 
     free(it);
@@ -163,7 +168,7 @@ void delete_CP(DB *db, char *C, char *P) {
     LinkedListIterator it = LinkedList_iterator(cp);
     char *ASTERISK = "*";
 
-    printf("Delete Specification: ('%s', '%s') \n", C, P);
+    printf("\nDelete Specification: ('%s', '%s') \n", C, P);
 
     while(LinkedListIterator_hasNext(it)) {
         void *data = LinkedListIterator_next(it);
@@ -179,7 +184,7 @@ void delete_CP(DB *db, char *C, char *P) {
         }
     }
 
-    printf("\nNew Relation: \n");
+    printf("\nUpdated CP Relation: \n");
     print_CP(db);
 
     free(it);
@@ -191,7 +196,7 @@ void delete_CDH(DB *db, char *C, char *D, char *H) {
     LinkedListIterator it = LinkedList_iterator(cdh);
     char *ASTERISK = "*";
 
-    printf("Delete Specification: ('%s', '%s', '%s') \n", C, D, H);
+    printf("\nDelete Specification: ('%s', '%s', '%s') \n", C, D, H);
 
     while(LinkedListIterator_hasNext(it)) {
         void *data = LinkedListIterator_next(it);
@@ -208,7 +213,7 @@ void delete_CDH(DB *db, char *C, char *D, char *H) {
         }
     }
 
-    printf("\nNew Relation: \n");
+    printf("\nUpdated CDH Relation: \n");
     print_CDH(db);
 
     free(it);
@@ -220,7 +225,7 @@ void delete_CR(DB *db, char *C, char *R) {
     LinkedListIterator it = LinkedList_iterator(cr);
     char *ASTERISK = "*";
 
-    printf("Delete Specification: ('%s', '%s') \n", C, R);
+    printf("\nDelete Specification: ('%s', '%s') \n", C, R);
 
     while(LinkedListIterator_hasNext(it)) {
         void *data = LinkedListIterator_next(it);
@@ -236,7 +241,7 @@ void delete_CR(DB *db, char *C, char *R) {
         }
     }
 
-    printf("\nNew Relation: \n");
+    printf("\nUpdated CR Relation: \n");
     print_CR(db);
 
     free(it);

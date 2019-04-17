@@ -90,9 +90,10 @@ int main(void)
     print_CR(db);
 
     //Example 8.2 functions
+
     //lookup_CSG(db, "CS101", "12345", "*");
     //lookup_CP(db, "CS101","*");
-    //delete_CR(db, "CS101", "*");
-    //insert_CP(db, "CS101", "CS120");
-    //insert_CP(db, "CS205", "CS205");
+    delete_CR(db, "CS101", "*");
+    insert_CP(db, new_CP("CS205", "CS120"));
+    insert_CP(db, new_CP("CS205", "CS101"));
 }
