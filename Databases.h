@@ -18,24 +18,34 @@ struct CSG{
 };
 
 struct SNAP{ //student name address phone
-	int SID;
+	int studentID;
 	char name[15];
 	char address[20]; //address of the student
 	int pNumber;	//phone number
 };
 
-struct Prerequisite{//course and its prerequisite
+struct CP{//course and its prerequisite
 	char course[5];
 	char prereq[5]; //prerequisite of the course
 };
 
-struct Cour_Day_Hour{
+struct CDH{
 	char course[5];
 	char day[2];	//day of the week
 	char time[4];	//time of the class
 };
 
-struct Course_Room{
+struct CR{
 	char course[5];
 	char room[15];
 };
+
+struct Database{
+	struct LinkedList *list;
+	int relations;
+};
+typedef struct Database DB;
+
+void delete(char *c, DB *dataBase);
+DB lookup(char *c, DB *dataBase);
+void insert(char *c, DB *dataBase);

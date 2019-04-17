@@ -5,25 +5,7 @@
 #include "LinkedList.h"
 #include "Databases.h"
 
-
-struct Database{
-	struct LinkedList *list;
-	int relations;
-};
-typedef struct Database DB;
-
-struct CSG{
-	int ID;
-	char Name[30];
-	char Address[50];
-	char Phone[10];
-	DB next;
-};
 //typedef TUPLELIST Course-Prerequisite[1009];
-
-void delete(char *c, DB *dataBase);
-bool lookup(char *c, DB *dataBase);
-void insert(char *c, DB *dataBase);
 
 DB *newDatabase(int n){
 	DB *db = (DB*)malloc(sizeof(DB));//allocating space in memory for the database
@@ -44,9 +26,9 @@ DB lookup(char *c, DB *dataBase){
 	DB *tempDB = (DB*)malloc(sizeof(DB));
 	tempDB->list = new_LinkedList();
 
-	LinkedListIterator
+	//LinkedListIterator
 
-	return dataBase;
+	//return dataBase;
 }
 
 void delete(char *c, DB *dataBase){
