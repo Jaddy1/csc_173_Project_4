@@ -18,6 +18,7 @@ void insert_CSG(DB *db, CSG_Relation *csg) {
 	if (LinkedList_contains(db->csg, csg)) {
 		printf("ERROR: Duplicate tuple");
 	}
+    printf("Inserting snap in the database");
 	LinkedList_add_at_end(db->csg, csg);
 }
 
