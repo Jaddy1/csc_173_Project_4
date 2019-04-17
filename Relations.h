@@ -34,7 +34,7 @@ typedef struct CR{
 }CR_Relation;
 
 
-CSG_Relation* new_CSG(char *C, int S, char *G);
+CSG_Relation* new_CSG(char *C, char *S, char *G);
 void insert_CSG(DB *db, CSG_Relation *csg);
 void insert_SNAP(DB *db, SNAP_Relation *snap);
 void insert_CP(DB *db, CP_Relation *cp);

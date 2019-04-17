@@ -1,15 +1,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Relations.h"
 #include "Database.h"
 
-CSG_Relation* new_CSG(char *C, int S, char *G) {
+CSG_Relation* new_CSG(char *C, char *S, char *G) {
 	CSG_Relation *csg = malloc(sizeof(struct CSG));
 
 	strcpy(csg->course, C);
-	csg->SID = S;
-	strcpy(csg->grade, C);
+	strcpy(csg->SID, S);
+	strcpy(csg->grade, G);
 
 	return csg;
 }
@@ -60,12 +61,16 @@ void insert_CR(DB *db, CR_Relation *cr) {
 
 void delete_CSG(DB *db, char *C, char *S, char *G) {
     LinkedList csg = db->csg;
+    LinkedListIterator it = LinkedList_iterator(csg);
 
-    while(LinkedListIterator_hasNext(csg)) {
-        if()
+    while(LinkedListIterator_hasNext(it)) {
+        void *data = LinkedListIterator_next(it);
+		CSG_Relation *rel = data;
+
+        if(strcmp(rel->course, C) == 0 || strcmp(rel->course, "*") {
+            if(strcmp(rel))
+        }
     }
-
-
 }
 
 void delete_SNAP(DB *db, char *S, char *N, char *A, char *P) {
