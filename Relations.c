@@ -23,7 +23,7 @@ void insert_CSG(DB *db, CSG_Relation *csg) {
 }
 
 void insert_SNAP(DB *db, SNAP_Relation *snap) {
-	if(LinkedList_contains(db->snap, snap)){
+	if (LinkedList_contains(db->snap, snap)) {
 		printf("ERROR: Duplicate tuple");
 	}else{
 		LinkedList_add_at_end(db->snap, snap);
@@ -32,15 +32,30 @@ void insert_SNAP(DB *db, SNAP_Relation *snap) {
 }
 
 void insert_CP(DB *db, CP_Relation *cp) {
-
+	if (LinkedList_contains(db->cp, cp)) {
+		printf("ERROR: Duplicate tuple");
+	} else {
+		LinkedList_add_at_end(db->cp, cp);
+        printf("Inserted CP into the database");
+	}
 }
 
 void insert_CDH(DB *db, CDH_Relation *cdh) {
-
+	if (LinkedList_contains(db->cp, cdh)) {
+		printf("ERROR: Duplicate tuple");
+	} else {
+		LinkedList_add_at_end(db->cdh, cdh);
+        printf("Inserted CDH into the database");
+	}
 }
 
 void insert_CR(DB *db, CR_Relation *cr) {
-
+	if (LinkedList_contains(db->cr, cr)) {
+		printf("ERROR: Duplicate tuple");
+	} else {
+		LinkedList_add_at_end(db->cr, cr);
+        printf("Inserted CR into the database");
+	}
 }
 
 void delete_CSG(DB *db, char *C, char *S, char *G) {
