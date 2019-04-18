@@ -17,7 +17,7 @@ int main(void)
     CSG_Relation *csg2 = new_CSG("CS101", "67890", "B");
     CSG_Relation *csg3 = new_CSG("EE200", "12345", "C");
     CSG_Relation *csg4 = new_CSG("EE200", "12345", "B+");
-    CSG_Relation *csg5 = new_CSG("CS101", "12345", "A-");
+    CSG_Relation *csg5 = new_CSG("CS101", "33333", "A-");
     CSG_Relation *csg6 = new_CSG("PH100", "67890", "C+");
 
     //Populate SNAP tables
@@ -116,8 +116,8 @@ int main(void)
     LinkedList selectedCDH = select_CDH(db, false, false, true, "9AM");
     print_CDH(selectedCDH);
 
-    printf("\nSelect from CR Where Room = 'Turing Aud.'\n");
-    LinkedList selectedCR = select_CR(db, false, true,"Turing Aud.");
+    printf("\nSelect from CR Where Room = 'Newton Lab.'\n");
+    LinkedList selectedCR = select_CR(db, false, true,"Newton Lab.");
     print_CR(selectedCR);
 
     //Example 8.13 Projection Function
