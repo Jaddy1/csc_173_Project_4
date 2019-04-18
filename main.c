@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stddef.h>
 #include "LinkedList.c"
 #include "Database.c"
 #include "Relations.c"
+#include "Algebra.c"
 
 int main(void)
 {
@@ -83,17 +85,43 @@ int main(void)
     insert_CR(db, cr3);
 
     //Print tables
-    print_CSG(db);
-    print_SNAP(db);
-    print_CP(db);
-    print_CDH(db);
-    print_CR(db);
+    print_CSG(db->csg);
+    print_SNAP(db->snap);
+    print_CP(db->cp);
+    print_CDH(db->cdh);
+    print_CR(db->cr);
 
     //Example 8.2 functions
-
     //lookup_CSG(db, "CS101", "12345", "*");
     //lookup_CP(db, "CS101","*");
     delete_CR(db, "CS101", "*");
     insert_CP(db, new_CP("CS205", "CS120"));
     insert_CP(db, new_CP("CS205", "CS101"));
+
+    //Example 8.12 Selection Function
+    printf("\nSelect from CSG Where Course = 'CS101'\n");
+    LinkedList selectedCSG = select_CSG(db, true, false, false, "CS101");
+    print_CSG(selectedCSG);
+
+    //Other examples of Selection Functions just for fun
+    printf("\nSelect from CP Where Prerequisite = 'CS100'\n");
+    LinkedList selectedCP = select_CP(db,false, true, "CS100");
+    print_CP(selectedCP);
+
+    printf("\nSelect from SNAP Where StudentId = '12345'\n");
+    LinkedList selectedSNAP = select_SNAP(db, true, false, false, false, "12345");
+    print_SNAP(selectedSNAP);
+
+    printf("\nSelect from CDH Where Hour = '9AM'\n");
+    LinkedList selectedCDH = select_CDH(db, false, false, true, "9AM");
+    print_CDH(selectedCDH);
+
+    printf("\nSelect from CR Where Room = 'Turing Aud.'\n");
+    LinkedList selectedCR = select_CR(db, false, true,"Turing Aud.");
+    print_CR(selectedCR);
+
+    //Example 8.13 Projection Function
+    printf("\nProject StudentIDs of Students that Take CS101\n\n");
+    LinkedList projectedCSG = project_CSG(selectedCSG, false, true, false);
+    LinkedList_print_string_list(projectedCSG);
 }

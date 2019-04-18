@@ -60,7 +60,7 @@ void insert_CSG(DB *db, CSG_Relation *csg) {
 	}
 	LinkedList_add_at_end(db->csg, csg);
     printf("\nInserted CSG in the database\n");
-    print_CSG(db);
+    print_CSG(db->csg);
 }
 
 void insert_SNAP(DB *db, SNAP_Relation *snap) {
@@ -69,7 +69,7 @@ void insert_SNAP(DB *db, SNAP_Relation *snap) {
 	}else{
 		LinkedList_add_at_end(db->snap, snap);
         printf("\nInserted SNAP in the database\n");
-        print_SNAP(db);
+        print_SNAP(db->snap);
 	}
 }
 
@@ -79,7 +79,7 @@ void insert_CP(DB *db, CP_Relation *cp) {
 	} else {
 		LinkedList_add_at_end(db->cp, cp);
         printf("\nInserted CP into the database \n");
-        print_CP(db);
+        print_CP(db->cp);
 	}
 }
 
@@ -89,7 +89,7 @@ void insert_CDH(DB *db, CDH_Relation *cdh) {
 	} else {
 		LinkedList_add_at_end(db->cdh, cdh);
         printf("\nInserted CDH into the database \n");
-        print_CDH(db);
+        print_CDH(db->cdh);
 	}
 }
 
@@ -99,7 +99,7 @@ void insert_CR(DB *db, CR_Relation *cr) {
 	} else {
 		LinkedList_add_at_end(db->cr, cr);
         printf("\nInserted CR into the database \n");
-        print_CR(db);
+        print_CR(db->cr);
 	}
 }
 
@@ -128,7 +128,7 @@ void delete_CSG(DB *db, char *C, char *S, char *G) {
     }
 
     printf("\nUpdated CSG Relation: \n");
-    print_CSG(db);
+    print_CSG(db->csg);
 
     free(it);
 }
@@ -157,7 +157,7 @@ void delete_SNAP(DB *db, char *S, char *N, char *A, char *P) {
     }
 
     printf("\nUpdated SNAP Relation: \n");
-    print_SNAP(db);
+    print_SNAP(db->snap);
 
     free(it);
 
@@ -185,7 +185,7 @@ void delete_CP(DB *db, char *C, char *P) {
     }
 
     printf("\nUpdated CP Relation: \n");
-    print_CP(db);
+    print_CP(db->cp);
 
     free(it);
 
@@ -214,7 +214,7 @@ void delete_CDH(DB *db, char *C, char *D, char *H) {
     }
 
     printf("\nUpdated CDH Relation: \n");
-    print_CDH(db);
+    print_CDH(db->cdh);
 
     free(it);
 
@@ -242,12 +242,13 @@ void delete_CR(DB *db, char *C, char *R) {
     }
 
     printf("\nUpdated CR Relation: \n");
-    print_CR(db);
+    print_CR(db->cr);
 
     free(it);
 
 }
 
+/*
 DB *lookup_CSG(DB *db, char *C, char *S, char G){
 	DB *newDB = (DB)malloc(sizeof(DB));
 	LinkedList csg = db->csg;
@@ -274,6 +275,7 @@ DB *lookup_CSG(DB *db, char *C, char *S, char G){
 	free(it);
 	return newDB;
 }
+*/
 
 void lookup_SNAP(DB *db, char *S, char *N, char *A, char *P) {
 
@@ -291,8 +293,7 @@ void lookup_CR(DB *db, char *C, char *P) {
 
 }
 
-void print_CSG(DB *db) {
-    LinkedList csgTuples = db->csg;
+void print_CSG(LinkedList csgTuples) {
     LinkedListIterator it = LinkedList_iterator(csgTuples);
     int tupleCount = 0;
 
@@ -308,8 +309,7 @@ void print_CSG(DB *db) {
     }
 }
 
-void print_SNAP(DB *db) {
-    LinkedList snapTuples = db->snap;
+void print_SNAP(LinkedList snapTuples) {
     LinkedListIterator it = LinkedList_iterator(snapTuples);
     int tupleCount = 0;
 
@@ -325,8 +325,7 @@ void print_SNAP(DB *db) {
     }
 
 }
-void print_CDH(DB *db) {
-    LinkedList cdhTuples = db->cdh;
+void print_CDH(LinkedList cdhTuples) {
     LinkedListIterator it = LinkedList_iterator(cdhTuples);
     int tupleCount = 0;
 
@@ -342,8 +341,7 @@ void print_CDH(DB *db) {
     }
 
 }
-void print_CP(DB *db) {
-    LinkedList cpTuples = db->cp;
+void print_CP(LinkedList cpTuples) {
     LinkedListIterator it = LinkedList_iterator(cpTuples);
     int tupleCount = 0;
 
@@ -359,8 +357,7 @@ void print_CP(DB *db) {
     }
 
 }
-void print_CR(DB *db) {
-    LinkedList crTuples = db->cr;
+void print_CR(LinkedList crTuples) {
     LinkedListIterator it = LinkedList_iterator(crTuples);
     int tupleCount = 0;
 

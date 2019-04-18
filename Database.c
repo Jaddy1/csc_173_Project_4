@@ -26,11 +26,3 @@ DB* newDatabase() {
 	return db;
 }
 
-void printDatabase(DB db) {
-	printf("CSG TUPLES:");
-	printf("SNAP TUPLES:");
-	printf("CP TUPLES:");
-	printf("CDH TUPLES:");
-	printf("CR TUPLES:");
-
-}

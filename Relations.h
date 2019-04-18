@@ -54,9 +54,9 @@ void lookup_SNAP(DB *db, char *S, char *N, char *A, char *P);
 void lookup_CP(DB *db, char *C, char *P);
 void lookup_CDH(DB *db, char *C, char *D, char *H);
 void lookup_CR(DB *db, char *C, char *P);
-void print_CSG(DB *db);
-void print_SNAP(DB *db);
-void print_CP(DB *db);
-void print_CDH(DB *db);
-void print_CR(DB *db);
+void print_CSG(LinkedList csgTuples);
+void print_SNAP(LinkedList snapTuples);
+void print_CP(LinkedList cpTuples);
+void print_CDH(LinkedList cdhTuples);
+void print_CR(LinkedList crTuples);
 #endif
